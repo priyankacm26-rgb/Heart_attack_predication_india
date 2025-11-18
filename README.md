@@ -35,24 +35,6 @@ Typical columns include:
 
 ---
 
-## 🧹 SQL Data Cleaning Steps
 
-```sql
--- 1. Removing duplicates
-DELETE FROM heart_attack_data
-WHERE rowid NOT IN (
-    SELECT MIN(rowid)
-    FROM heart_attack_data
-    GROUP BY age, gender, bp, cholesterol
-);
 
--- 2. Handling missing values
-SELECT * FROM heart_attack_data
-WHERE age IS NULL
-   OR bp IS NULL
-   OR cholesterol IS NULL;
-
--- 3. Standardizing categorical values
-UPDATE heart_attack_data
-SET gender = UPPER(gender);
 
